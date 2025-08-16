@@ -7,7 +7,7 @@ domain_slug: "simulation"
 period: "Aug 2024 - Dec 2024"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/foldable-robot-mujoco"
-cover_image: "/assets/images/projects/foldable-robot-cover.jpg"
+cover_image: "/assets/images/projects/foldable-robot-cover.png"
 preview_image: "/assets/images/projects/foldable-robot-preview.gif"
 technologies:
   - "MuJoCo"
