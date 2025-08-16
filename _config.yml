@@ -1,0 +1,65 @@
+# Jekyll Portfolio Configuration
+title: "Pranay Palem - Robotics Engineer & AI Researcher"
+description: "Portfolio of Pranay Palem - Robotics Engineer with expertise in AI/ML, ROS 2, and autonomous systems"
+baseurl: ""
+url: "https://pranaypalem.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+  experience:
+    output: false
+
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Site settings
+author:
+  name: "Pranay Palem"
+  email: "pranaypalem@gmail.com"
+  location: "5820N Sheridan Rd, Chicago, IL"
+  phone: "6025586689"
+  linkedin: "linkedin.com/in/pranaypalem"
+  github: "github.com/pranaypalem"
+
+# SEO
+google_analytics: 
+social:
+  - url: https://linkedin.com/in/pranaypalem
+    icon: linkedin
+  - url: https://github.com/pranaypalem
+    icon: github
+  - url: mailto:pranaypalem@gmail.com
+    icon: email

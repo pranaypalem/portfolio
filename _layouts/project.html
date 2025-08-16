@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+<section class="project-detail">
+    <div class="container">
+        <div class="project-header">
+            <div class="project-meta">
+                <span class="project-domain {{ page.domain_slug }}">{{ page.domain }}</span>
+                <span class="project-period">{{ page.period }}</span>
+            </div>
+            <h1 class="project-title">{{ page.title }}</h1>
+            <p class="project-description">{{ page.description }}</p>
+            
+            {% if page.github_url %}
+            <div class="project-links">
+                <a href="{{ page.github_url }}" target="_blank" class="btn btn-primary">
+                    <i data-lucide="github"></i>
+                    View on GitHub
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="project-content">
+            <div class="project-overview">
+                <h2>Overview</h2>
+                <p>{{ page.long_description }}</p>
+                
+                {% if page.technologies %}
+                <div class="project-technologies">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-tags">
+                        {% for tech in page.technologies %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if page.highlights %}
+                <div class="project-highlights">
+                    <h3>Key Highlights</h3>
+                    <ul class="highlights-list">
+                        {% for highlight in page.highlights %}
+                        <li>{{ highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            
+            {% if content != '' %}
+            <div class="project-details">
+                {{ content }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

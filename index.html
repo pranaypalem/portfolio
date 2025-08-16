@@ -1,0 +1,487 @@
+---
+layout: default
+title: "Home"
+---
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg-element"></div>
+    <div class="hero-bg-element"></div>
+    
+    <div class="container">
+        <div class="hero-content">
+            <!-- Greeting Badge -->
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                Available for new opportunities
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="hero-title">
+                Hi, I'm <span class="text-gradient">{{ site.author.name }}</span>
+            </h1>
+            
+            <h2 class="hero-subtitle">
+                Robotics Engineer &amp; AI Researcher
+            </h2>
+
+            <!-- Summary -->
+            <p class="hero-description">
+                Robotics Engineer with solid experience in hardware-software integration and real-time robotic solutions. 
+                Expertise includes simulation and deployment with ROS 2 and Isaac Sim alongside hands-on roles in embedded systems and PLC automation.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary btn-lg">
+                    View My Work
+                    <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="/assets/resume.pdf" class="btn btn-outline btn-lg" target="_blank">
+                    <i data-lucide="download"></i>
+                    Download Resume
+                </a>
+            </div>
+
+            <!-- Contact Links -->
+            <div class="hero-contact">
+                <a href="mailto:{{ site.author.email }}" class="contact-link" aria-label="Email">
+                    <i data-lucide="mail"></i>
+                </a>
+                <a href="https://{{ site.author.linkedin }}" target="_blank" class="contact-link" aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="https://{{ site.author.github }}" target="_blank" class="contact-link" aria-label="GitHub">
+                    <i data-lucide="github"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Domains Section -->
+<section id="domains" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Expertise Areas</h2>
+            <p class="section-description">
+                Specialized knowledge across multiple domains of robotics and artificial intelligence
+            </p>
+        </div>
+        
+        <div class="domains-grid">
+            <div class="domain-card">
+                <div class="domain-icon ai-ml">
+                    <i data-lucide="brain"></i>
+                </div>
+                <h3 class="domain-title">AI/ML</h3>
+                <p class="domain-description">
+                    Deep Learning, Computer Vision, NLP, and Machine Learning projects
+                </p>
+            </div>
+            
+            <div class="domain-card">
+                <div class="domain-icon robotics">
+                    <i data-lucide="bot"></i>
+                </div>
+                <h3 class="domain-title">Robotics</h3>
+                <p class="domain-description">
+                    Robotic systems, control, kinematics, and autonomous navigation
+                </p>
+            </div>
+            
+            <div class="domain-card">
+                <div class="domain-icon simulation">
+                    <i data-lucide="cube"></i>
+                </div>
+                <h3 class="domain-title">Simulation</h3>
+                <p class="domain-description">
+                    Physics simulation, digital twins, and virtual environments
+                </p>
+            </div>
+            
+            <div class="domain-card">
+                <div class="domain-icon automation">
+                    <i data-lucide="factory"></i>
+                </div>
+                <h3 class="domain-title">Industrial Automation</h3>
+                <p class="domain-description">
+                    PLC programming, SCADA systems, and industrial control
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">
+                A selection of my recent work in robotics, AI, and automation
+            </p>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- AI/ML Projects -->
+            <div class="project-card">
+                <div class="project-meta">
+                    <span class="project-domain ai-ml">AI/ML</span>
+                    <span class="project-period">May 2025 - Present</span>
+                </div>
+                <h3 class="project-title">Mammo-CLIP Vision-Language Model</h3>
+                <p class="project-description">
+                    OpenAI CLIP-style Vision-Language Model for mammogram analysis with radiology reports alignment
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">CLIP</span>
+                    <span class="tech-tag">Transformers</span>
+                    <span class="tech-tag">Computer Vision</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-meta">
+                    <span class="project-domain ai-ml">AI/ML</span>
+                    <span class="project-period">Aug 2024 - Dec 2024</span>
+                </div>
+                <h3 class="project-title">SimCLR Chest X-ray Analysis</h3>
+                <p class="project-description">
+                    Self-supervised learning on 100K+ NIH Chest X-ray images achieving 98.5% clustering accuracy
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">SimCLR</span>
+                    <span class="tech-tag">Medical Imaging</span>
+                    <span class="tech-tag">Self-Supervised Learning</span>
+                </div>
+            </div>
+            
+            <!-- Robotics Projects -->
+            <div class="project-card">
+                <div class="project-meta">
+                    <span class="project-domain robotics">Robotics</span>
+                    <span class="project-period">Jan 2025 - May 2025</span>
+                </div>
+                <h3 class="project-title">Perception Pipeline with SDG &amp; Domain Randomization</h3>
+                <p class="project-description">
+                    End-to-end robotic perception pipeline with LiDAR SLAM, RRT exploration, and YOLOv8 object detection
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">ROS 2</span>
+                    <span class="tech-tag">YOLOv8</span>
+                    <span class="tech-tag">Isaac Sim</span>
+                    <span class="tech-tag">SLAM</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/pranaypalem/perception-pipeline" target="_blank" class="btn btn-outline">
+                        <i data-lucide="github"></i>
+                        View Code
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-meta">
+                    <span class="project-domain robotics">Robotics</span>
+                    <span class="project-period">Nov 2024 - Dec 2024</span>
+                </div>
+                <h3 class="project-title">Quaternion-based Kinematic Modeling</h3>
+                <p class="project-description">
+                    Advanced kinematic modeling for robotic arms using quaternions for improved 3D rotational accuracy
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Kinematics</span>
+                    <span class="tech-tag">Control Theory</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/pranaypalem/quaternion-kinematics" target="_blank" class="btn btn-outline">
+                        <i data-lucide="github"></i>
+                        View Code
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Simulation Projects -->
+            <div class="project-card">
+                <div class="project-meta">
+                    <span class="project-domain simulation">Simulation</span>
+                    <span class="project-period">Aug 2024 - Dec 2024</span>
+                </div>
+                <h3 class="project-title">Design Optimization of Foldable Robot in MuJoCo</h3>
+                <p class="project-description">
+                    Simulation and optimization of 196+ foldable robot configurations with adaptive initialization
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">MuJoCo</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">scikit-optimize</span>
+                    <span class="tech-tag">Physics Simulation</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/pranaypalem/foldable-robot-mujoco" target="_blank" class="btn btn-outline">
+                        <i data-lucide="github"></i>
+                        View Code
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Automation Projects -->
+            <div class="project-card">
+                <div class="project-meta">
+                    <span class="project-domain automation">Automation</span>
+                    <span class="project-period">Apr 2019 - Jul 2019</span>
+                </div>
+                <h3 class="project-title">IoT-based Home Automation &amp; Security System</h3>
+                <p class="project-description">
+                    ARM7 microcontroller-based automation system with ESP8266 WiFi and real-time monitoring
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">C/C++</span>
+                    <span class="tech-tag">ARM7</span>
+                    <span class="tech-tag">ESP8266</span>
+                    <span class="tech-tag">IoT</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-description">
+                Technologies and tools I work with across different domains
+            </p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="skill-category-title">AI/ML</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">scikit-learn</span>
+                    <span class="skill-tag">Transformers</span>
+                    <span class="skill-tag">CLIP</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">Robotics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">ROS 2</span>
+                    <span class="skill-tag">MoveIt 2</span>
+                    <span class="skill-tag">Nav2</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">URDF</span>
+                    <span class="skill-tag">RViz</span>
+                    <span class="skill-tag">Kinematics</span>
+                    <span class="skill-tag">Control Theory</span>
+                    <span class="skill-tag">Motion Planning</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">Simulation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">MuJoCo</span>
+                    <span class="skill-tag">Isaac Sim</span>
+                    <span class="skill-tag">Isaac Lab</span>
+                    <span class="skill-tag">Physics Simulation</span>
+                    <span class="skill-tag">Domain Randomization</span>
+                    <span class="skill-tag">Digital Twins</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">Industrial Automation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PLC Programming</span>
+                    <span class="skill-tag">Ladder Logic</span>
+                    <span class="skill-tag">SCADA</span>
+                    <span class="skill-tag">Allen-Bradley</span>
+                    <span class="skill-tag">Siemens</span>
+                    <span class="skill-tag">Embedded Systems</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">ARM7</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">General</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">TensorRT</span>
+                    <span class="skill-tag">NVIDIA Jetson</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">MLOps</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Experience &amp; Education</h2>
+            <p class="section-description">
+                My professional journey and academic background
+            </p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-meta">
+                        <span class="timeline-type research">Research</span>
+                        <span class="timeline-period">May 2025 - Present</span>
+                    </div>
+                    <h3 class="timeline-title">Deep Learning Research Assistant – Medical AI</h3>
+                    <p class="timeline-company">Arizona State University • Tempe, United States</p>
+                    <p class="timeline-description">
+                        Leading research in medical AI with focus on Vision-Language Models for clinical applications
+                    </p>
+                    <ul class="timeline-highlights">
+                        <li>Engineered Mammo-CLIP Vision-Language Model for mammogram analysis</li>
+                        <li>Implemented explainable AI methods for clinical transparency</li>
+                        <li>Applied self-supervised learning achieving 98.5% clustering accuracy</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-meta">
+                        <span class="timeline-type research">Research</span>
+                        <span class="timeline-period">Aug 2024 - May 2025</span>
+                    </div>
+                    <h3 class="timeline-title">Machine Learning Assistant – Robotics</h3>
+                    <p class="timeline-company">Arizona State University • Tempe, United States</p>
+                    <p class="timeline-description">
+                        Developed deep reinforcement learning models for robotic decision-making and control
+                    </p>
+                    <ul class="timeline-highlights">
+                        <li>Developed PPO and Actor-Critic models for robotic control</li>
+                        <li>Led RL project achieving 35% performance optimization</li>
+                        <li>Conducted experiments using PyTorch and Stable-Baselines3</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-meta">
+                        <span class="timeline-type education">Education</span>
+                        <span class="timeline-period">Aug 2023 - May 2025</span>
+                    </div>
+                    <h3 class="timeline-title">Master of Science, Robotics and Autonomous Systems</h3>
+                    <p class="timeline-company">Arizona State University • Tempe, AZ</p>
+                    <p class="timeline-description">
+                        Advanced studies in robotics, AI, and autonomous systems with perfect GPA
+                    </p>
+                    <ul class="timeline-highlights">
+                        <li>GPA: 4.0/4.0</li>
+                        <li>Coursework: Reinforcement Learning, Deep Learning, Computer Vision, AI for Robotics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-meta">
+                        <span class="timeline-type work">Work</span>
+                        <span class="timeline-period">Apr 2019 - Jul 2019</span>
+                    </div>
+                    <h3 class="timeline-title">Robotics &amp; Embedded Systems Intern</h3>
+                    <p class="timeline-company">DRDO • Hyderabad, India</p>
+                    <p class="timeline-description">
+                        Developed IoT-based automation systems using ARM7 microcontrollers
+                    </p>
+                    <ul class="timeline-highlights">
+                        <li>Created home automation system with LPC2148 ARM7</li>
+                        <li>Implemented sensor fusion and real-time monitoring</li>
+                        <li>Gained hardware-software integration experience</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-meta">
+                        <span class="timeline-type work">Work</span>
+                        <span class="timeline-period">Apr 2018 - Jul 2018</span>
+                    </div>
+                    <h3 class="timeline-title">PLC Automation Intern</h3>
+                    <p class="timeline-company">Rayalaseema Thermal Power Plant • Kadapa, India</p>
+                    <p class="timeline-description">
+                        Industrial automation experience with PLC programming and SCADA systems
+                    </p>
+                    <ul class="timeline-highlights">
+                        <li>Worked with Allen-Bradley and Siemens PLCs</li>
+                        <li>Assisted in boiler automation and turbine control</li>
+                        <li>Learned industrial safety and troubleshooting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section contact">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-description">
+                Let's discuss opportunities and collaborations
+            </p>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i data-lucide="mail"></i>
+                </div>
+                <a href="mailto:{{ site.author.email }}" class="contact-text">{{ site.author.email }}</a>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i data-lucide="linkedin"></i>
+                </div>
+                <a href="https://{{ site.author.linkedin }}" target="_blank" class="contact-text">LinkedIn Profile</a>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                <p class="contact-text">{{ site.author.location }}</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="mailto:{{ site.author.email }}" class="btn btn-primary btn-lg">
+                <i data-lucide="mail"></i>
+                Send me an email
+            </a>
+        </div>
+    </div>
+</section>
