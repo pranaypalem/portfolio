@@ -336,6 +336,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     margin-bottom: 3rem;
+    width: 100%;
 }
 
 .hero-contact {
@@ -378,6 +379,7 @@ h1, h2, h3, h4, h5, h6 {
     .hero-actions {
         flex-direction: row;
         justify-content: center;
+        width: 100%;
     }
 }
 
