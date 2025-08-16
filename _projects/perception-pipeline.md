@@ -7,6 +7,8 @@ domain_slug: "robotics"
 period: "Jan 2025 - May 2025"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/perception-pipeline"
+cover_image: "/assets/images/projects/perception-pipeline-cover.jpg"
+preview_image: "/assets/images/projects/perception-pipeline-preview.gif"
 technologies:
   - "ROS 2"
   - "YOLOv8"
@@ -27,6 +29,9 @@ highlights:
 ## Project Overview
 
 This comprehensive robotic perception pipeline project integrates multiple cutting-edge technologies to create a robust autonomous navigation and object detection system. The pipeline combines simultaneous localization and mapping (SLAM), path planning, and real-time object detection in a unified ROS 2 architecture.
+
+![Cover Image]({{ page.cover_image | relative_url }})
+*End-to-end robotic perception pipeline in Isaac Sim environment*
 
 ## System Architecture
 

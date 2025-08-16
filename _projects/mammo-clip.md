@@ -6,6 +6,8 @@ domain: "AI/ML"
 domain_slug: "ai-ml"
 period: "May 2025 - Present"
 organization: "Arizona State University"
+cover_image: "/assets/images/projects/mammo-clip-cover.jpg"
+preview_image: "/assets/images/projects/mammo-clip-preview.gif"
 technologies:
   - "PyTorch"
   - "CLIP"
@@ -26,6 +28,9 @@ highlights:
 ## Project Overview
 
 The Mammo-CLIP project represents a significant advancement in medical AI, specifically designed for mammogram analysis and interpretation. This work builds upon OpenAI's CLIP (Contrastive Language-Image Pre-training) architecture to create a specialized vision-language model for the medical domain.
+
+![Cover Image]({{ page.cover_image | relative_url }})
+*Mammo-CLIP architecture for multimodal mammogram analysis*
 
 ## Technical Implementation
 
