@@ -8,7 +8,7 @@ period: "Aug 2024 - Dec 2024"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/simclr-chest-xray"
 cover_image: "/assets/images/projects/simclr-chest-xray-cover.jpg"
-preview_image: "/assets/images/projects/simclr-chest-xray-preview.gif"
+preview_image: "/assets/images/projects/simclr-chest-xray-cover.jpg"
 technologies:
   - "PyTorch"
   - "SimCLR"
