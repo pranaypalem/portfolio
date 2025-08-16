@@ -124,129 +124,37 @@ title: "Home"
         </div>
         
         <div class="projects-grid">
-            <!-- AI/ML Projects -->
+            {% for project in site.projects %}
             <div class="project-card">
                 <div class="project-meta">
-                    <span class="project-domain ai-ml">AI/ML</span>
-                    <span class="project-period">May 2025 - Present</span>
+                    <span class="project-domain {{ project.domain_slug }}">{{ project.domain }}</span>
+                    <span class="project-period">{{ project.period }}</span>
                 </div>
-                <h3 class="project-title">Mammo-CLIP Vision-Language Model</h3>
+                <h3 class="project-title">
+                    <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+                </h3>
                 <p class="project-description">
-                    OpenAI CLIP-style Vision-Language Model for mammogram analysis with radiology reports alignment
+                    {{ project.description }}
                 </p>
                 <div class="project-tech">
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">CLIP</span>
-                    <span class="tech-tag">Transformers</span>
-                    <span class="tech-tag">Computer Vision</span>
+                    {% for tech in project.technologies limit:4 %}
+                    <span class="tech-tag">{{ tech }}</span>
+                    {% endfor %}
                 </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-meta">
-                    <span class="project-domain ai-ml">AI/ML</span>
-                    <span class="project-period">Aug 2024 - Dec 2024</span>
-                </div>
-                <h3 class="project-title">SimCLR Chest X-ray Analysis</h3>
-                <p class="project-description">
-                    Self-supervised learning on 100K+ NIH Chest X-ray images achieving 98.5% clustering accuracy
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">SimCLR</span>
-                    <span class="tech-tag">Medical Imaging</span>
-                    <span class="tech-tag">Self-Supervised Learning</span>
-                </div>
-            </div>
-            
-            <!-- Robotics Projects -->
-            <div class="project-card">
-                <div class="project-meta">
-                    <span class="project-domain robotics">Robotics</span>
-                    <span class="project-period">Jan 2025 - May 2025</span>
-                </div>
-                <h3 class="project-title">Perception Pipeline with SDG &amp; Domain Randomization</h3>
-                <p class="project-description">
-                    End-to-end robotic perception pipeline with LiDAR SLAM, RRT exploration, and YOLOv8 object detection
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">ROS 2</span>
-                    <span class="tech-tag">YOLOv8</span>
-                    <span class="tech-tag">Isaac Sim</span>
-                    <span class="tech-tag">SLAM</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/pranaypalem/perception-pipeline" target="_blank" class="btn btn-outline">
+                <div class="project-actions">
+                    <a href="{{ project.url | relative_url }}" class="btn btn-primary">
+                        <i data-lucide="arrow-right"></i>
+                        View Details
+                    </a>
+                    {% if project.github_url %}
+                    <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline">
                         <i data-lucide="github"></i>
                         View Code
                     </a>
+                    {% endif %}
                 </div>
             </div>
-            
-            <div class="project-card">
-                <div class="project-meta">
-                    <span class="project-domain robotics">Robotics</span>
-                    <span class="project-period">Nov 2024 - Dec 2024</span>
-                </div>
-                <h3 class="project-title">Quaternion-based Kinematic Modeling</h3>
-                <p class="project-description">
-                    Advanced kinematic modeling for robotic arms using quaternions for improved 3D rotational accuracy
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">NumPy</span>
-                    <span class="tech-tag">Kinematics</span>
-                    <span class="tech-tag">Control Theory</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/pranaypalem/quaternion-kinematics" target="_blank" class="btn btn-outline">
-                        <i data-lucide="github"></i>
-                        View Code
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Simulation Projects -->
-            <div class="project-card">
-                <div class="project-meta">
-                    <span class="project-domain simulation">Simulation</span>
-                    <span class="project-period">Aug 2024 - Dec 2024</span>
-                </div>
-                <h3 class="project-title">Design Optimization of Foldable Robot in MuJoCo</h3>
-                <p class="project-description">
-                    Simulation and optimization of 196+ foldable robot configurations with adaptive initialization
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">MuJoCo</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">scikit-optimize</span>
-                    <span class="tech-tag">Physics Simulation</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/pranaypalem/foldable-robot-mujoco" target="_blank" class="btn btn-outline">
-                        <i data-lucide="github"></i>
-                        View Code
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Automation Projects -->
-            <div class="project-card">
-                <div class="project-meta">
-                    <span class="project-domain automation">Automation</span>
-                    <span class="project-period">Apr 2019 - Jul 2019</span>
-                </div>
-                <h3 class="project-title">IoT-based Home Automation &amp; Security System</h3>
-                <p class="project-description">
-                    ARM7 microcontroller-based automation system with ESP8266 WiFi and real-time monitoring
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">C/C++</span>
-                    <span class="tech-tag">ARM7</span>
-                    <span class="tech-tag">ESP8266</span>
-                    <span class="tech-tag">IoT</span>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
