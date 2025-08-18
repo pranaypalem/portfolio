@@ -555,11 +555,11 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 2rem;
     transition: var(--transition-normal);
     height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 500px;
 }
 
 .project-card:hover {
@@ -616,9 +616,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-description {
     color: var(--muted-foreground);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     flex-grow: 1;
     line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-tech {
@@ -646,7 +650,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: 1rem;
     margin-top: auto;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 
 .project-title a {
@@ -664,11 +668,11 @@ h1, h2, h3, h4, h5, h6 {
     height: 200px;
     overflow: hidden;
     border-radius: var(--radius-md);
-    margin-bottom: 1.5rem;
     background: var(--muted);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .project-preview-image {
@@ -685,7 +689,8 @@ h1, h2, h3, h4, h5, h6 {
 .project-content {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex-grow: 1;
+    padding: 1.5rem;
 }
 
 /* Skills Section */
@@ -1004,6 +1009,14 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
     
+    .project-card {
+        min-height: 450px;
+    }
+    
+    .project-preview {
+        height: 180px;
+    }
+    
     .timeline::before {
         left: 1rem;
     }
@@ -1075,4 +1088,218 @@ h1, h2, h3, h4, h5, h6 {
 .domain-card:active {
     transform: translateY(-6px) scale(1.01);
     transition: all 0.1s ease;
+}
+
+/* Projects Page Styles */
+.projects-page {
+    padding: 6rem 0 4rem;
+    min-height: 100vh;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+}
+
+.breadcrumb-link {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: var(--muted-foreground);
+}
+
+.breadcrumb-current {
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.page-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-description {
+    font-size: var(--font-size-lg);
+    color: var(--muted-foreground);
+    max-width: 48rem;
+    margin: 0 auto 3rem;
+}
+
+/* Domain Filter Tabs */
+.domain-filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.filter-tab {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: var(--transition-normal);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.filter-tab:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.filter-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: var(--shadow-md);
+}
+
+/* Filtered Projects Grid */
+.filtered-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* Consistent Project Card Sizing */
+.project-card.consistent-size {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card.consistent-size .project-preview {
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.project-card.consistent-size .project-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-card.consistent-size .project-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.5rem;
+}
+
+.project-card.consistent-size .project-description {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-card.consistent-size .project-actions {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.empty-state-content {
+    max-width: 24rem;
+    margin: 0 auto;
+}
+
+.empty-state-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 2rem;
+    background: var(--muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-foreground);
+}
+
+.empty-state-icon i {
+    width: 2rem;
+    height: 2rem;
+}
+
+.empty-state-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+}
+
+.empty-state-description {
+    color: var(--muted-foreground);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for projects page */
+@media (max-width: 768px) {
+    .filtered-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .project-card.consistent-size {
+        min-height: 450px;
+    }
+    
+    .project-card.consistent-size .project-preview {
+        height: 180px;
+    }
+    
+    .domain-filter-tabs {
+        gap: 0.25rem;
+    }
+    
+    .filter-tab {
+        padding: 0.5rem 1rem;
+        font-size: var(--font-size-xs);
+    }
+    
+    .page-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .breadcrumb {
+        flex-wrap: wrap;
+    }
 }

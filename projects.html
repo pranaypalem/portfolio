@@ -1,0 +1,211 @@
+---
+layout: default
+title: "Projects"
+permalink: /projects/
+---
+
+<section class="projects-page">
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="breadcrumb">
+                <a href="/" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current" id="domain-name">All Projects</span>
+            </div>
+            
+            <h1 class="page-title" id="page-title">All Projects</h1>
+            <p class="page-description" id="page-description">
+                Explore my complete portfolio of robotics, AI, and automation projects
+            </p>
+            
+            <!-- Domain Filter Tabs -->
+            <div class="domain-filter-tabs">
+                <button class="filter-tab active" data-domain="all">All Projects</button>
+                <button class="filter-tab" data-domain="ai-ml">AI/ML</button>
+                <button class="filter-tab" data-domain="robotics">Robotics</button>
+                <button class="filter-tab" data-domain="simulation">Simulation</button>
+                <button class="filter-tab" data-domain="industrial-automation">Industrial Automation</button>
+            </div>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="filtered-projects-grid" id="projects-container">
+            {% for project in site.projects %}
+            <div class="project-card consistent-size" data-domain="{{ project.domain_slug }}">
+                {% if project.preview_image %}
+                <div class="project-preview">
+                    <img src="{{ project.preview_image | relative_url }}" alt="{{ project.title }} preview" class="project-preview-image">
+                </div>
+                {% endif %}
+                <div class="project-content">
+                    <div class="project-meta">
+                        <span class="project-domain {{ project.domain_slug }}">{{ project.domain }}</span>
+                        <span class="project-period">{{ project.period }}</span>
+                    </div>
+                    <h3 class="project-title">
+                        <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+                    </h3>
+                    <p class="project-description">
+                        {{ project.description }}
+                    </p>
+                    <div class="project-tech">
+                        {% for tech in project.technologies limit:4 %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="project-actions">
+                        <a href="{{ project.url | relative_url }}" class="btn btn-primary">
+                            <i data-lucide="arrow-right"></i>
+                            View Details
+                        </a>
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline">
+                            <i data-lucide="github"></i>
+                            View Code
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+            <div class="empty-state-content">
+                <div class="empty-state-icon">
+                    <i data-lucide="folder-open"></i>
+                </div>
+                <h3 class="empty-state-title">No Projects Found</h3>
+                <p class="empty-state-description">
+                    There are no projects in this category yet. Check back soon for updates!
+                </p>
+                <a href="/projects/" class="btn btn-primary">
+                    <i data-lucide="arrow-left"></i>
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get URL parameters for filtering
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterDomain = urlParams.get('domain');
+    
+    const projectCards = document.querySelectorAll('.project-card');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const emptyState = document.getElementById('empty-state');
+    const projectsContainer = document.getElementById('projects-container');
+    const pageTitle = document.getElementById('page-title');
+    const pageDescription = document.getElementById('page-description');
+    const domainName = document.getElementById('domain-name');
+    
+    // Domain information
+    const domainInfo = {
+        'all': {
+            title: 'All Projects',
+            description: 'Explore my complete portfolio of robotics, AI, and automation projects',
+            name: 'All Projects'
+        },
+        'ai-ml': {
+            title: 'AI/ML Projects',
+            description: 'Deep Learning, Computer Vision, NLP, and Machine Learning projects',
+            name: 'AI/ML'
+        },
+        'robotics': {
+            title: 'Robotics Projects', 
+            description: 'Robotic systems, control, kinematics, and autonomous navigation',
+            name: 'Robotics'
+        },
+        'simulation': {
+            title: 'Simulation Projects',
+            description: 'Physics simulation, digital twins, and virtual environments',
+            name: 'Simulation'
+        },
+        'industrial-automation': {
+            title: 'Industrial Automation Projects',
+            description: 'PLC programming, SCADA systems, and industrial control',
+            name: 'Industrial Automation'
+        }
+    };
+    
+    function filterProjects(domain) {
+        let visibleCount = 0;
+        
+        projectCards.forEach(card => {
+            const cardDomain = card.getAttribute('data-domain');
+            
+            if (domain === 'all' || cardDomain === domain) {
+                card.style.display = 'block';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                visibleCount++;
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // Show/hide empty state
+        if (visibleCount === 0) {
+            setTimeout(() => {
+                emptyState.style.display = 'block';
+                projectsContainer.style.display = 'none';
+            }, 300);
+        } else {
+            emptyState.style.display = 'none';
+            projectsContainer.style.display = 'grid';
+        }
+        
+        // Update page content
+        const info = domainInfo[domain] || domainInfo['all'];
+        pageTitle.textContent = info.title;
+        pageDescription.textContent = info.description;
+        domainName.textContent = info.name;
+        
+        // Update active tab
+        filterTabs.forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.getAttribute('data-domain') === domain) {
+                tab.classList.add('active');
+            }
+        });
+        
+        // Update URL without page reload
+        const newUrl = domain === 'all' ? '/projects/' : `/projects/?domain=${domain}`;
+        window.history.replaceState({}, '', newUrl);
+    }
+    
+    // Add click handlers to filter tabs
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const domain = this.getAttribute('data-domain');
+            filterProjects(domain);
+        });
+    });
+    
+    // Apply initial filter based on URL parameter
+    if (filterDomain && domainInfo[filterDomain]) {
+        filterProjects(filterDomain);
+    } else {
+        filterProjects('all');
+    }
+    
+    // Add stagger effect to visible cards
+    function addStaggerEffect() {
+        const visibleCards = document.querySelectorAll('.project-card[style*="display: block"], .project-card:not([style*="display: none"])');
+        visibleCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 100}ms`;
+        });
+    }
+    
+    addStaggerEffect();
+});
+</script>
