@@ -200,9 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const projectsSection = document.getElementById('projects');
         const resetButton = document.getElementById('reset-filter-btn');
         
-        console.log('Initializing domain filtering...');
-        console.log('Found domain cards:', domainCards.length);
-        console.log('Found project cards:', projectCards.length);
         
         // Domain slug mapping
         const domainSlugMap = {
@@ -239,15 +236,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Adjust grid min-height to prevent layout shifts
+            // Maintain consistent grid layout
             if (projectsGrid) {
-                const minHeight = Math.max(400, Math.ceil(visibleCount / 3) * 300);
+                // Calculate required height based on visible cards with consistent sizing
+                const cardsPerRow = window.innerWidth > 1200 ? 3 : window.innerWidth > 768 ? 2 : 1;
+                const cardHeight = window.innerWidth > 768 ? 500 : 450;
+                const rowGap = 32; // 2rem gap
+                const rows = Math.ceil(visibleCount / cardsPerRow);
+                const minHeight = rows > 0 ? (rows * cardHeight) + ((rows - 1) * rowGap) : 400;
+                
                 projectsGrid.style.minHeight = `${minHeight}px`;
                 
-                // Remove min-height after animation
+                // Remove min-height after animation completes
                 setTimeout(() => {
                     projectsGrid.style.minHeight = '';
-                }, 500);
+                }, 600);
             }
             
             // Update domain card states
@@ -282,28 +285,16 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.cursor = 'pointer';
             
             card.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent any default behavior
-                e.stopPropagation(); // Stop event bubbling
-                
-                console.log('Domain card clicked:', index);
-                
-                // Visual feedback - flash the card
-                this.style.background = 'red';
-                setTimeout(() => {
-                    this.style.background = '';
-                }, 200);
+                e.preventDefault();
+                e.stopPropagation();
                 
                 const domainTitle = this.querySelector('.domain-title').textContent;
                 const domainSlug = domainSlugMap[domainTitle];
                 
-                console.log('Domain title:', domainTitle, 'Slug:', domainSlug);
-                
                 // Toggle filter
                 if (currentFilter === domainSlug) {
-                    console.log('Resetting filter');
                     filterProjects('all');
                 } else {
-                    console.log('Applying filter:', domainSlug);
                     filterProjects(domainSlug);
                     this.classList.add('active-filter');
                 }
@@ -316,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
                 
-                return false; // Explicitly prevent navigation
+                return false;
             });
             
             // Enhanced hover effect for clickable domains

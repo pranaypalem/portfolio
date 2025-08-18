@@ -131,7 +131,7 @@ title: "Home"
         
         <div class="projects-grid">
             {% for project in site.projects %}
-            <div class="project-card">
+            <div class="project-card consistent-size">
                 {% if project.preview_image %}
                 <div class="project-preview">
                     <img src="{{ project.preview_image | relative_url }}" alt="{{ project.title }} preview" class="project-preview-image">

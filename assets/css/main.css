@@ -1199,14 +1199,19 @@ h1, h2, h3, h4, h5, h6 {
 /* Consistent Project Card Sizing */
 .project-card.consistent-size {
     min-height: 500px;
+    max-height: 500px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    padding: 0;
 }
 
 .project-card.consistent-size .project-preview {
     height: 200px;
+    width: 100%;
     overflow: hidden;
     flex-shrink: 0;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .project-card.consistent-size .project-preview-image {
@@ -1220,6 +1225,8 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     flex-grow: 1;
     padding: 1.5rem;
+    height: 300px;
+    overflow: hidden;
 }
 
 .project-card.consistent-size .project-description {
@@ -1229,11 +1236,18 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.5;
+}
+
+.project-card.consistent-size .project-tech {
+    margin-bottom: 1rem;
+    min-height: 2rem;
 }
 
 .project-card.consistent-size .project-actions {
     margin-top: auto;
     padding-top: 1rem;
+    flex-shrink: 0;
 }
 
 /* Empty State */
@@ -1286,10 +1300,15 @@ h1, h2, h3, h4, h5, h6 {
     
     .project-card.consistent-size {
         min-height: 450px;
+        max-height: 450px;
     }
     
     .project-card.consistent-size .project-preview {
         height: 180px;
+    }
+    
+    .project-card.consistent-size .project-content {
+        height: 270px;
     }
     
     .domain-filter-tabs {
