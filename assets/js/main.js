@@ -192,9 +192,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Domain navigation functionality
-    function initDomainNavigation() {
+    // Domain filtering functionality
+    function initDomainFiltering() {
         const domainCards = document.querySelectorAll('.domain-card');
+        const projectCards = document.querySelectorAll('.project-card');
+        const projectsGrid = document.querySelector('.projects-grid');
+        const projectsSection = document.getElementById('projects');
+        const resetButton = document.getElementById('reset-filter-btn');
         
         // Domain slug mapping
         const domainSlugMap = {
@@ -204,6 +208,71 @@ document.addEventListener('DOMContentLoaded', function() {
             'Industrial Automation': 'industrial-automation'
         };
         
+        let currentFilter = 'all';
+        
+        function filterProjects(targetDomain) {
+            let visibleCount = 0;
+            
+            projectCards.forEach((card, index) => {
+                const projectDomain = card.querySelector('.project-domain').textContent.trim();
+                const projectDomainSlug = domainSlugMap[projectDomain] || projectDomain.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                
+                const shouldShow = targetDomain === 'all' || projectDomainSlug === targetDomain;
+                
+                if (shouldShow) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                    // Add stagger effect
+                    card.style.transitionDelay = `${visibleCount * 100}ms`;
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Adjust grid min-height to prevent layout shifts
+            if (projectsGrid) {
+                const minHeight = Math.max(400, Math.ceil(visibleCount / 3) * 300);
+                projectsGrid.style.minHeight = `${minHeight}px`;
+                
+                // Remove min-height after animation
+                setTimeout(() => {
+                    projectsGrid.style.minHeight = '';
+                }, 500);
+            }
+            
+            // Update domain card states
+            domainCards.forEach(card => {
+                card.classList.remove('active-filter');
+            });
+            
+            // Update section description and reset button
+            const sectionDescription = projectsSection.querySelector('.section-description');
+            if (targetDomain === 'all') {
+                if (sectionDescription) {
+                    sectionDescription.textContent = 'A selection of my recent work in robotics, AI, and automation';
+                }
+                if (resetButton) {
+                    resetButton.style.display = 'none';
+                }
+            } else {
+                const domainName = Object.keys(domainSlugMap).find(key => domainSlugMap[key] === targetDomain) || targetDomain;
+                if (sectionDescription) {
+                    sectionDescription.textContent = `Filtering projects by: ${domainName}`;
+                }
+                if (resetButton) {
+                    resetButton.style.display = 'inline-flex';
+                }
+            }
+            
+            currentFilter = targetDomain;
+        }
+        
         // Add click handlers to domain cards
         domainCards.forEach(card => {
             card.style.cursor = 'pointer';
@@ -212,23 +281,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 const domainTitle = this.querySelector('.domain-title').textContent;
                 const domainSlug = domainSlugMap[domainTitle];
                 
-                // Navigate to projects page with domain filter
-                if (domainSlug) {
-                    window.location.href = `/projects/?domain=${domainSlug}`;
+                // Toggle filter
+                if (currentFilter === domainSlug) {
+                    filterProjects('all');
                 } else {
-                    window.location.href = '/projects/';
+                    filterProjects(domainSlug);
+                    this.classList.add('active-filter');
                 }
+                
+                // Smooth scroll to projects section
+                projectsSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             });
             
             // Enhanced hover effect for clickable domains
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-                this.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.15)';
+                if (!this.classList.contains('active-filter')) {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                    this.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.15)';
+                }
             });
             
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(-4px) scale(1)';
-                this.style.boxShadow = '';
+                if (!this.classList.contains('active-filter')) {
+                    this.style.transform = 'translateY(-4px) scale(1)';
+                    this.style.boxShadow = '';
+                }
             });
         });
         
@@ -237,13 +317,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (domainsSection) {
             const sectionDescription = domainsSection.querySelector('.section-description');
             if (sectionDescription) {
-                sectionDescription.textContent = 'Click on any expertise area to view related projects';
+                sectionDescription.textContent = 'Click on any expertise area to filter projects below';
             }
         }
+        
+        // Add reset button functionality
+        if (resetButton) {
+            resetButton.addEventListener('click', function() {
+                filterProjects('all');
+            });
+        }
+        
+        // Add "Show All" functionality - double-click any active filter to reset
+        domainCards.forEach(card => {
+            card.addEventListener('dblclick', function() {
+                filterProjects('all');
+            });
+        });
     }
     
-    // Initialize domain navigation
-    initDomainNavigation();
+    // Initialize domain filtering
+    initDomainFiltering();
 
     console.log('Portfolio loaded successfully! 🚀');
 });

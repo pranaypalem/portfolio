@@ -549,6 +549,11 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+#projects {
+    padding-bottom: 5rem;
 }
 
 .project-card {
@@ -1076,6 +1081,7 @@ h1, h2, h3, h4, h5, h6 {
 .projects-grid {
     min-height: 400px;
     transition: min-height 0.3s ease;
+    margin-bottom: 4rem;
 }
 
 /* Enhanced hover states for clickable domains */
