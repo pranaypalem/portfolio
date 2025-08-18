@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 requestAnimationFrame(function() {
                     const currentScroll = window.pageYOffset;
                     
-                    if (currentScroll > 50) {
+                    if (currentScroll > 20) {
                         header.style.background = 'hsla(0, 0%, 100%, 0.95)';
                         header.style.backdropFilter = 'blur(12px)';
                     } else {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add stagger effect to grid items
     const gridItems = document.querySelectorAll('.domains-grid > *, .projects-grid > *, .skills-grid > *');
     gridItems.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 50}ms`;
+        item.style.transitionDelay = `${index * 20}ms`;
     });
 
     // Add hover effects to project cards
@@ -161,26 +161,26 @@ document.addEventListener('DOMContentLoaded', function() {
             if (i < text.length) {
                 heroTitle.textContent += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100);
+                setTimeout(typeWriter, 50);
             }
         }
         
         // Start typing effect after a delay
-        setTimeout(typeWriter, 1000);
+        setTimeout(typeWriter, 200);
     }
 
-    // Add parallax effect to hero background elements
+    // Add minimal parallax effect to hero background elements
     const heroBgElements = document.querySelectorAll('.hero-bg-element');
     if (heroBgElements.length > 0) {
         let parallaxTicking = false;
         window.addEventListener('scroll', function() {
-            if (!parallaxTicking) {
+            if (!parallaxTicking && window.pageYOffset < window.innerHeight) {
                 requestAnimationFrame(function() {
                     const scrolled = window.pageYOffset;
-                    const parallax = scrolled * 0.3; // Reduced multiplier for smoother effect
+                    const parallax = scrolled * 0.1; // Minimal effect
                     
                     heroBgElements.forEach((element, index) => {
-                        const speed = (index + 1) * 0.2; // Reduced speed
+                        const speed = (index + 1) * 0.1; // Minimal speed
                         element.style.transform = `translateY(${parallax * speed}px)`;
                     });
                     parallaxTicking = false;
@@ -249,14 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                     // Add stagger effect
-                    card.style.transitionDelay = `${visibleCount * 30}ms`;
+                    card.style.transitionDelay = `${visibleCount * 10}ms`;
                     visibleCount++;
                 } else {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
                     setTimeout(() => {
                         card.style.display = 'none';
-                    }, 150);
+                    }, 50);
                 }
             });
             
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Remove min-height after animation completes
                 setTimeout(() => {
                     projectsGrid.style.minHeight = '';
-                }, 200);
+                }, 100);
             }
             
             // Update domain card states
