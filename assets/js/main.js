@@ -200,6 +200,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const projectsSection = document.getElementById('projects');
         const resetButton = document.getElementById('reset-filter-btn');
         
+        console.log('Initializing domain filtering...');
+        console.log('Found domain cards:', domainCards.length);
+        console.log('Found project cards:', projectCards.length);
+        
         // Domain slug mapping
         const domainSlugMap = {
             'AI/ML': 'ai-ml',
@@ -274,26 +278,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Add click handlers to domain cards
-        domainCards.forEach(card => {
+        domainCards.forEach((card, index) => {
             card.style.cursor = 'pointer';
             
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent any default behavior
+                e.stopPropagation(); // Stop event bubbling
+                
+                console.log('Domain card clicked:', index);
+                
+                // Visual feedback - flash the card
+                this.style.background = 'red';
+                setTimeout(() => {
+                    this.style.background = '';
+                }, 200);
+                
                 const domainTitle = this.querySelector('.domain-title').textContent;
                 const domainSlug = domainSlugMap[domainTitle];
                 
+                console.log('Domain title:', domainTitle, 'Slug:', domainSlug);
+                
                 // Toggle filter
                 if (currentFilter === domainSlug) {
+                    console.log('Resetting filter');
                     filterProjects('all');
                 } else {
+                    console.log('Applying filter:', domainSlug);
                     filterProjects(domainSlug);
                     this.classList.add('active-filter');
                 }
                 
                 // Smooth scroll to projects section
-                projectsSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                if (projectsSection) {
+                    projectsSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                return false; // Explicitly prevent navigation
             });
             
             // Enhanced hover effect for clickable domains
