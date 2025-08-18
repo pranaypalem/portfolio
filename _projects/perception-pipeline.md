@@ -8,7 +8,7 @@ period: "Jan 2025 - May 2025"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/perception-pipeline"
 cover_image: "/assets/images/projects/perception-pipeline-cover.jpg"
-preview_image: "/assets/images/projects/perception-pipeline-preview.gif"
+preview_image: "/assets/images/projects/perception-pipeline-cover.jpg"
 technologies:
   - "ROS 2"
   - "YOLOv8"

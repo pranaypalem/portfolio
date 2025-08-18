@@ -105,17 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add hover effects to domain cards
-    const domainCards = document.querySelectorAll('.domain-card');
-    domainCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(-4px) scale(1)';
-        });
-    });
 
     // Active nav link highlighting
     function updateActiveNavLink() {
@@ -202,6 +191,128 @@ document.addEventListener('DOMContentLoaded', function() {
             heroContent.style.transform = 'translateY(0)';
         }
     });
+
+    // Domain filtering functionality
+    function initDomainFiltering() {
+        const domainCards = document.querySelectorAll('.domain-card');
+        const projectCards = document.querySelectorAll('.project-card');
+        const projectsSection = document.getElementById('projects');
+        let activeFilter = null;
+        
+        // Create a "Show All" state
+        function showAllProjects() {
+            projectCards.forEach(card => {
+                card.style.display = 'block';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
+            
+            domainCards.forEach(card => {
+                card.classList.remove('active-filter');
+            });
+            
+            activeFilter = null;
+        }
+        
+        // Filter projects by domain
+        function filterProjectsByDomain(domain) {
+            const domainSlugMap = {
+                'AI/ML': 'ai-ml',
+                'Robotics': 'robotics',
+                'Simulation': 'simulation',
+                'Industrial Automation': 'industrial-automation'
+            };
+            
+            const targetSlug = domainSlugMap[domain];
+            
+            projectCards.forEach((card, index) => {
+                const projectDomain = card.querySelector('.project-domain');
+                const projectSlug = projectDomain ? projectDomain.classList[1] : null;
+                
+                if (projectSlug === targetSlug) {
+                    // Show matching projects with staggered animation
+                    setTimeout(() => {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                } else {
+                    // Hide non-matching projects
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        // Add click handlers to domain cards
+        domainCards.forEach(card => {
+            card.style.cursor = 'pointer';
+            
+            card.addEventListener('click', function() {
+                const domainTitle = this.querySelector('.domain-title').textContent;
+                
+                // Smooth scroll to projects section
+                if (projectsSection) {
+                    const headerOffset = 100;
+                    const elementPosition = projectsSection.offsetTop;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Toggle filter
+                if (activeFilter === domainTitle) {
+                    // If clicking the same domain, show all
+                    showAllProjects();
+                } else {
+                    // Apply new filter
+                    activeFilter = domainTitle;
+                    
+                    // Update visual state
+                    domainCards.forEach(c => c.classList.remove('active-filter'));
+                    this.classList.add('active-filter');
+                    
+                    // Filter projects
+                    setTimeout(() => {
+                        filterProjectsByDomain(domainTitle);
+                    }, 500); // Wait for scroll to complete
+                }
+            });
+            
+            // Enhanced hover effect for clickable domains
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('active-filter')) {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                    this.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.15)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active-filter')) {
+                    this.style.transform = 'translateY(-4px) scale(1)';
+                    this.style.boxShadow = '';
+                }
+            });
+        });
+        
+        // Add visual indicator that domains are clickable
+        const domainsSection = document.getElementById('domains');
+        if (domainsSection) {
+            const sectionDescription = domainsSection.querySelector('.section-description');
+            if (sectionDescription) {
+                sectionDescription.textContent = 'Click on any expertise area to view related projects';
+            }
+        }
+    }
+    
+    // Initialize domain filtering
+    initDomainFiltering();
 
     console.log('Portfolio loaded successfully! 🚀');
 });

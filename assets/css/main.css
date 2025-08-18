@@ -1021,3 +1021,58 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
     }
 }
+
+/* Domain Filtering Styles */
+.domain-card {
+    cursor: pointer;
+    user-select: none;
+}
+
+.domain-card.active-filter {
+    background: var(--gradient-primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-glow);
+}
+
+.domain-card.active-filter .domain-title {
+    color: var(--primary-foreground);
+}
+
+.domain-card.active-filter .domain-description {
+    color: hsl(0, 0%, 95%);
+    opacity: 0.9;
+}
+
+.domain-card.active-filter .domain-icon {
+    background: hsl(0, 0%, 100%, 0.2);
+    color: var(--primary-foreground);
+}
+
+.domain-card.active-filter::before {
+    opacity: 0;
+}
+
+/* Project filtering animations */
+.project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth visibility transitions for filtered projects */
+.projects-grid {
+    min-height: 400px;
+    transition: min-height 0.3s ease;
+}
+
+/* Enhanced hover states for clickable domains */
+.domain-card:not(.active-filter):hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Visual feedback for interactivity */
+.domain-card:active {
+    transform: translateY(-6px) scale(1.01);
+    transition: all 0.1s ease;
+}
