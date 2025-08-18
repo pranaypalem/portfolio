@@ -47,19 +47,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.header');
     if (header) {
         let lastScroll = 0;
+        let ticking = false;
         
         window.addEventListener('scroll', function() {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.background = 'hsla(0, 0%, 100%, 0.95)';
-                header.style.backdropFilter = 'blur(12px)';
-            } else {
-                header.style.background = 'hsla(0, 0%, 100%, 0.95)';
-                header.style.backdropFilter = 'blur(8px)';
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    const currentScroll = window.pageYOffset;
+                    
+                    if (currentScroll > 50) {
+                        header.style.background = 'hsla(0, 0%, 100%, 0.95)';
+                        header.style.backdropFilter = 'blur(12px)';
+                    } else {
+                        header.style.background = 'hsla(0, 0%, 100%, 0.95)';
+                        header.style.backdropFilter = 'blur(8px)';
+                    }
+                    
+                    lastScroll = currentScroll;
+                    ticking = false;
+                });
+                ticking = true;
             }
-            
-            lastScroll = currentScroll;
         });
     }
 
@@ -90,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add stagger effect to grid items
     const gridItems = document.querySelectorAll('.domains-grid > *, .projects-grid > *, .skills-grid > *');
     gridItems.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 100}ms`;
+        item.style.transitionDelay = `${index * 50}ms`;
     });
 
     // Add hover effects to project cards
@@ -130,7 +137,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    window.addEventListener('scroll', updateActiveNavLink);
+    // Throttle nav link updates
+    let navTicking = false;
+    window.addEventListener('scroll', function() {
+        if (!navTicking) {
+            requestAnimationFrame(function() {
+                updateActiveNavLink();
+                navTicking = false;
+            });
+            navTicking = true;
+        }
+    });
     updateActiveNavLink(); // Initial call
 
     // Add typing effect to hero title (optional)
@@ -155,14 +172,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add parallax effect to hero background elements
     const heroBgElements = document.querySelectorAll('.hero-bg-element');
     if (heroBgElements.length > 0) {
+        let parallaxTicking = false;
         window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            
-            heroBgElements.forEach((element, index) => {
-                const speed = (index + 1) * 0.3;
-                element.style.transform = `translateY(${parallax * speed}px)`;
-            });
+            if (!parallaxTicking) {
+                requestAnimationFrame(function() {
+                    const scrolled = window.pageYOffset;
+                    const parallax = scrolled * 0.3; // Reduced multiplier for smoother effect
+                    
+                    heroBgElements.forEach((element, index) => {
+                        const speed = (index + 1) * 0.2; // Reduced speed
+                        element.style.transform = `translateY(${parallax * speed}px)`;
+                    });
+                    parallaxTicking = false;
+                });
+                parallaxTicking = true;
+            }
         });
     }
 
@@ -225,14 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                     // Add stagger effect
-                    card.style.transitionDelay = `${visibleCount * 100}ms`;
+                    card.style.transitionDelay = `${visibleCount * 30}ms`;
                     visibleCount++;
                 } else {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
                     setTimeout(() => {
                         card.style.display = 'none';
-                    }, 300);
+                    }, 150);
                 }
             });
             
@@ -250,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Remove min-height after animation completes
                 setTimeout(() => {
                     projectsGrid.style.minHeight = '';
-                }, 600);
+                }, 200);
             }
             
             // Update domain card states
