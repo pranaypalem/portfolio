@@ -547,9 +547,10 @@ h1, h2, h3, h4, h5, h6 {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, 350px);
     gap: 2rem;
     margin-bottom: 3rem;
+    justify-content: center;
 }
 
 #projects {
@@ -1198,6 +1199,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Consistent Project Card Sizing */
 .project-card.consistent-size {
+    width: 350px;
     min-height: 500px;
     max-height: 500px;
     display: flex;
@@ -1293,14 +1295,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive adjustments for projects page */
 @media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
     .filtered-projects-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
     .project-card.consistent-size {
+        width: 100%;
+        max-width: 350px;
         min-height: 450px;
         max-height: 450px;
+        margin: 0 auto;
     }
     
     .project-card.consistent-size .project-preview {
