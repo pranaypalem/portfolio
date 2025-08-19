@@ -8,7 +8,7 @@ period: "Nov 2024 - Dec 2024"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/kinematics-analysis"
 cover_image: "/assets/images/projects/quaternion-kinematics-cover.png"
-preview_image: "/assets/images/projects/quaternion-kinematics-cover.png"
+preview_image: "/assets/images/projects/quaternion-kinematics-preview.gif"
 technologies:
   - "Python"
   - "NumPy"
