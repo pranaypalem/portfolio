@@ -1,124 +1,54 @@
 ---
 title: "Design Optimization of a Foldable Robot in MuJoCo"
-description: "Simulated 196+ foldable robot configurations in MuJoCo using adaptive initialization, improving simulation stability by 60%"
-long_description: "Developed comprehensive simulation framework for foldable robot configurations in MuJoCo with quaternion-based kinematics and servo dynamics modeling to reduce sim-to-real gap."
-domain: "Simulation"
-domain_slug: "simulation"
+description: "Biomimetic foldable robot system with four-bar mechanism design for adaptive quadrupedal/bipedal locomotion"
+long_description: "Developed comprehensive simulation framework for biomimetic foldable robot configurations in MuJoCo inspired by basilisk lizard locomotion, implementing quaternion-based kinematics, servo dynamics modeling, and adaptive initialization techniques to improve simulation stability by 60%."
+domains:
+  - name: "Robotics"
+    slug: "robotics"
+  - name: "Biomimetics"
+    slug: "biomimetics"
+  - name: "Simulation"
+    slug: "simulation"
 period: "Aug 2024 - Dec 2024"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/foldable-robotics"
+show_code_button: true
 cover_image: "/assets/images/projects/foldable-robot-cover.png"
 preview_image: "/assets/images/projects/foldable-robot-preview.gif"
 technologies:
   - "MuJoCo"
   - "Python"
-  - "scikit-optimize"
   - "Quaternions"
+  - "Biomimetics"
   - "Control Theory"
 tags:
   - "Physics Simulation"
   - "Robot Design"
-  - "Optimization"
+  - "Biomimetics"
   - "Kinematics"
 highlights:
   - "Simulated 196+ foldable robot configurations with adaptive initialization"
-  - "Improved simulation stability by 60% through parameter optimization"
-  - "Modeled quaternion-based kinematics and servo dynamics"
+  - "Improved simulation stability by 60% through quaternion-based modeling"
+  - "Implemented biomimetic four-bar mechanism for locomotion transitions"
   - "Enhanced robustness across 2-100 segmented-body configurations"
 ---
 
-## Project Overview
+## Introduction
 
-This project focuses on the design optimization of foldable robots using advanced physics simulation in MuJoCo. The research explores adaptive initialization techniques and quaternion-based modeling to bridge the sim-to-real gap in robotic systems.
+This project develops a biomimetic robotic system inspired by basilisk lizard locomotion, featuring adaptive movement capabilities through four-bar mechanism design. The system demonstrates dynamic transitions between quadrupedal and bipedal locomotion modes, optimized through comprehensive MuJoCo physics simulation.
 
-![Cover Image]({{ page.cover_image | relative_url }})
-*Foldable robot simulation environment in MuJoCo*
+## Skills Used
 
-## Technical Implementation
+- **Biomimetic Design**: Nature-inspired locomotion mechanisms and adaptive behaviors
+- **Physics Simulation**: Advanced MuJoCo modeling with quaternion-based kinematics
+- **Control Theory**: Servo dynamics modeling and parameter optimization
+- **Optimization**: Iterative parameter testing and performance enhancement
+- **Mechanical Design**: Four-bar linkage systems and configurable mechanisms
 
-### Simulation Framework
-- **Environment**: MuJoCo physics engine for accurate dynamics
-- **Configurations**: 196+ unique foldable robot designs
-- **Adaptive Initialization**: Custom algorithms for stable simulation startup
-- **Parameter Space**: 2-100 segmented-body configurations
+## Project
 
-### Kinematics and Dynamics
-```python
-# Quaternion-based forward kinematics
-def forward_kinematics_quaternion(joint_angles, segment_lengths):
-    """
-    Compute forward kinematics using quaternion representation
-    for improved numerical stability in 3D rotations
-    """
-    poses = []
-    current_pose = np.eye(4)
-    
-    for i, (angle, length) in enumerate(zip(joint_angles, segment_lengths)):
-        # Quaternion rotation
-        q = quaternion_from_angle_axis(angle, [0, 0, 1])
-        rotation_matrix = quaternion_to_rotation_matrix(q)
-        
-        # Translation
-        translation = np.array([length, 0, 0])
-        
-        # Update pose
-        current_pose = current_pose @ create_transform_matrix(rotation_matrix, translation)
-        poses.append(current_pose.copy())
-    
-    return poses
-```
+The foldable robotics project addresses fundamental challenges in adaptive locomotion by developing a biomimetic system that transitions seamlessly between different movement modes. Inspired by basilisk lizard locomotion patterns, the four-bar mechanism enables dynamic reconfiguration between quadrupedal ground-based movement and bipedal high-speed locomotion.
 
-### Optimization Strategy
-- **Algorithm**: scikit-optimize for parameter tuning
-- **Objective**: Maximize stability and minimize energy consumption
-- **Constraints**: Physical limits and collision avoidance
-- **Validation**: Cross-validation across different environments
+The simulation framework implements 196+ unique robot configurations with adaptive initialization techniques that improve simulation stability by 60%. Quaternion-based kinematics provide robust rotational representation while servo dynamics modeling reduces the sim-to-real gap for practical deployment.
 
-## Key Results
-
-### Performance Metrics
-- **Simulation Stability**: 60% improvement in convergence rate
-- **Configuration Coverage**: 196+ unique robot designs tested
-- **Parameter Optimization**: Automated tuning across full design space
-- **Robustness**: Enhanced performance across dynamic environments
-
-### Sim-to-Real Gap Reduction
-- **Quaternion Modeling**: Improved rotational accuracy
-- **Servo Dynamics**: Realistic actuator behavior modeling
-- **Contact Forces**: Enhanced ground interaction simulation
-- **Material Properties**: Accurate deformation modeling
-
-## Innovation and Impact
-
-### Technical Contributions
-1. **Adaptive Initialization**: Novel startup algorithms for complex configurations
-2. **Quaternion Kinematics**: Improved numerical stability in 3D space
-3. **Scalable Framework**: Support for 2-100 segment configurations
-4. **Optimization Integration**: Seamless parameter tuning workflow
-
-### Applications
-- **Search and Rescue**: Deployable robots for confined spaces
-- **Space Exploration**: Compact robots for planetary missions
-- **Medical Devices**: Minimally invasive surgical tools
-- **Industrial Automation**: Flexible manufacturing systems
-
-## Technical Challenges and Solutions
-
-### Challenge 1: Simulation Instability
-**Problem**: Complex configurations causing simulation divergence
-**Solution**: Adaptive initialization with progressive complexity ramping
-
-### Challenge 2: High-Dimensional Optimization
-**Problem**: Large parameter space for optimization
-**Solution**: Hierarchical optimization with scikit-optimize
-
-### Challenge 3: Sim-to-Real Gap
-**Problem**: Simulation not matching real-world behavior
-**Solution**: Detailed servo dynamics and quaternion-based modeling
-
-## Future Work
-
-- **Hardware Validation**: Physical prototype testing
-- **Machine Learning**: Neural network-based control policies
-- **Multi-Robot Systems**: Coordinated foldable robot swarms
-- **Real-time Control**: Edge deployment for autonomous operation
+The system demonstrates exceptional versatility across 2-100 segmented-body configurations, enabling scalable design approaches for various applications. Iterative parameter testing in MuJoCo validates performance across diverse terrains and operational scenarios, establishing a comprehensive foundation for future biomimetic robot development and deployment in dynamic environments.

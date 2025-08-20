@@ -1,12 +1,18 @@
 ---
 title: "Perception Pipeline with SDG & Domain Randomization"
 description: "End-to-end robotic perception pipeline with LiDAR SLAM, RRT exploration, and YOLOv8 object detection"
-long_description: "Developed an end-to-end robotic perception pipeline integrating LiDAR-based SLAM, RRT exploration, and YOLOv8 object detection with 95% validation accuracy under Software-in-the-Loop (SIL) testing."
-domain: "Robotics"
-domain_slug: "robotics"
+long_description: "Developed comprehensive end-to-end robotic perception pipeline integrating LiDAR-based SLAM, RRT exploration, and YOLOv8 object detection, achieving 95% validation accuracy with sub-50ms latency on NVIDIA Jetson Xavier NX through domain randomization and 5,000+ synthetic training images."
+domains:
+  - name: "Robotics"
+    slug: "robotics"
+  - name: "Computer Vision"
+    slug: "computer-vision"
+  - name: "Perception"
+    slug: "perception"
 period: "Jan 2025 - May 2025"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/perception-pipeline"
+show_code_button: false
 cover_image: "/assets/images/projects/perception-pipeline-preview.gif"
 preview_image: "/assets/images/projects/perception-pipeline-preview.gif"
 technologies:
@@ -23,90 +29,26 @@ tags:
 highlights:
   - "Integrated LiDAR-based SLAM with RRT exploration algorithms"
   - "Generated 5,000+ synthetic training images using domain randomization"
-  - "Deployed optimized model achieving sub-50ms latency on edge devices"
+  - "Achieved 95% validation accuracy with sub-50ms edge deployment latency"
+  - "Implemented unified ROS 2 architecture for distributed computing"
 ---
 
-## Project Overview
+## Introduction
 
-This comprehensive robotic perception pipeline project integrates multiple cutting-edge technologies to create a robust autonomous navigation and object detection system. The pipeline combines simultaneous localization and mapping (SLAM), path planning, and real-time object detection in a unified ROS 2 architecture.
+This comprehensive robotic perception pipeline project integrates cutting-edge technologies to create a robust autonomous navigation and object detection system. The pipeline combines simultaneous localization and mapping (SLAM), path planning, and real-time object detection in a unified ROS 2 architecture optimized for real-world deployment.
 
-![Cover Image]({{ page.cover_image | relative_url }})
-*End-to-end robotic perception pipeline in Isaac Sim environment*
+## Skills Used
 
-## System Architecture
+- **Robotic Perception**: LiDAR processing and sensor fusion techniques
+- **Computer Vision**: YOLOv8 optimization and real-time object detection
+- **SLAM Systems**: Mapping and localization algorithm implementation
+- **Edge Computing**: TensorRT optimization for resource-constrained hardware
+- **Synthetic Data Generation**: Domain randomization for robust model training
 
-### Core Components
-1. **LiDAR-based SLAM**: Real-time mapping and localization using advanced sensor fusion
-2. **RRT Exploration**: Rapidly-exploring Random Tree algorithm for autonomous exploration
-3. **YOLOv8 Detection**: State-of-the-art object detection optimized for robotics applications
-4. **Domain Randomization**: Synthetic data generation for robust model training
+## Project
 
-### Integration Framework
-- **ROS 2 Humble**: Modern robotics middleware for distributed computing
-- **Isaac Sim**: NVIDIA's physics-accurate simulation environment
-- **TensorRT**: GPU-accelerated inference optimization
+The end-to-end perception pipeline addresses critical challenges in autonomous robotics by seamlessly integrating mapping, exploration, and object detection capabilities. The system utilizes LiDAR-based SLAM for real-time mapping and localization while RRT exploration algorithms enable autonomous environment discovery and navigation.
 
-## Technical Implementation
+YOLOv8 object detection achieves 95% validation accuracy through comprehensive training on 5,000+ synthetic images generated using Isaac Sim's domain randomization techniques. TensorRT optimization enables sub-50ms inference latency on NVIDIA Jetson Xavier NX, making the system suitable for real-time autonomous operations.
 
-### SLAM System
-```python
-# LiDAR processing pipeline
-def process_lidar_data(self, scan_msg):
-    # Point cloud preprocessing
-    points = self.convert_scan_to_points(scan_msg)
-    
-    # SLAM update
-    pose_estimate = self.slam_backend.update(points)
-    
-    # Map update
-    self.occupancy_grid.update(points, pose_estimate)
-    
-    return pose_estimate
-```
-
-### Object Detection Pipeline
-- **Model**: YOLOv8n optimized for real-time inference
-- **Input Resolution**: 640x640 pixels for optimal speed-accuracy tradeoff
-- **Post-processing**: Non-maximum suppression with confidence thresholding
-
-### Domain Randomization
-- **Lighting Variations**: Dynamic illumination changes
-- **Texture Randomization**: Surface material modifications
-- **Geometric Variations**: Object placement and orientation changes
-
-## Performance Metrics
-
-### Accuracy Results
-- **Object Detection**: 95% mAP@0.5 on validation dataset
-- **SLAM Accuracy**: <2cm localization error in structured environments
-- **Exploration Coverage**: 98% area coverage efficiency
-
-### Real-time Performance
-- **Detection Latency**: <50ms on NVIDIA Jetson Xavier NX
-- **SLAM Update Rate**: 20Hz consistent performance
-- **Memory Usage**: <4GB total system memory
-
-## Deployment and Testing
-
-### Hardware Platforms
-- **Development**: High-performance workstation with RTX 4090
-- **Deployment**: NVIDIA Jetson Xavier NX edge computing platform
-- **Sensors**: Velodyne VLP-16 LiDAR, RealSense D435 camera
-
-### Validation Environment
-- **Simulation**: Isaac Sim with photorealistic environments
-- **Real-world Testing**: Laboratory and outdoor scenarios
-- **Stress Testing**: Various lighting and weather conditions
-
-## Key Innovations
-
-1. **Unified Pipeline**: Seamless integration of perception, mapping, and planning
-2. **Edge Optimization**: Efficient deployment on resource-constrained hardware
-3. **Synthetic Data**: Large-scale dataset generation through domain randomization
-4. **Modular Design**: Flexible architecture for different robotic platforms
-
-## Future Work
-
-- **Multi-Robot Coordination**: Extending to collaborative mapping scenarios
-- **Dynamic Objects**: Enhanced tracking of moving obstacles
-- **Semantic SLAM**: Integration of semantic understanding with geometric mapping
+The unified ROS 2 architecture provides distributed computing capabilities with modular design principles, ensuring scalability across different robotic platforms. Software-in-the-Loop testing validates system performance across diverse operational scenarios, establishing a robust foundation for autonomous navigation applications in dynamic environments with reliable perception and decision-making capabilities.
