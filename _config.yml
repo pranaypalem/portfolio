@@ -19,6 +19,21 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - Rakefile
+  - .git
+  - .gitignore
+
+# Performance optimizations
+liquid:
+  error_mode: warn
+  strict_filters: false
+  strict_variables: false
+
+incremental: false
+profile: false
 
 # Collections
 collections:
