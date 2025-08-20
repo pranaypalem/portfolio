@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (projectsGrid) {
                 // Calculate required height based on visible cards with consistent sizing
                 const cardsPerRow = window.innerWidth > 1200 ? 3 : window.innerWidth > 768 ? 2 : 1;
-                const cardHeight = window.innerWidth > 768 ? 500 : 450;
+                const cardHeight = window.innerWidth > 768 ? 550 : 500;
                 const rowGap = 32; // 2rem gap
                 const rows = Math.ceil(visibleCount / cardsPerRow);
                 const minHeight = rows > 0 ? (rows * cardHeight) + ((rows - 1) * rowGap) : 400;

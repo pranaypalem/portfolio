@@ -164,7 +164,7 @@ title: "Home"
                             <i data-lucide="arrow-right"></i>
                             View Details
                         </a>
-                        {% if project.github_url %}
+                        {% if project.github_url and project.show_code_button != false %}
                         <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline">
                             <i data-lucide="github"></i>
                             View Code
