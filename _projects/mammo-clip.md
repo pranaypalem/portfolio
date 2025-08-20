@@ -5,10 +5,6 @@ long_description: "Engineered and evaluated an OpenAI CLIP-style Vision-Language
 domains:
   - name: "AI/ML"
     slug: "ai-ml"
-  - name: "Computer Vision"
-    slug: "computer-vision"
-  - name: "Medical Imaging"
-    slug: "medical-imaging"
 period: "May 2025 - Present"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/MammoCLIP_Pranay"

@@ -5,10 +5,6 @@ long_description: "Implemented SimCLR self-supervised learning framework for che
 domains:
   - name: "AI/ML"
     slug: "ai-ml"
-  - name: "Computer Vision"
-    slug: "computer-vision"
-  - name: "Medical Imaging"
-    slug: "medical-imaging"
 period: "Aug 2024 - Dec 2024"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/simclr-chest-xray"

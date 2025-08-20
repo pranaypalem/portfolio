@@ -5,8 +5,6 @@ long_description: "Comprehensive study comparing PPO and TRPO reinforcement lear
 domains:
   - name: "AI/ML"
     slug: "ai-ml"
-  - name: "Reinforcement Learning"
-    slug: "reinforcement-learning"
 period: "2024"
 organization: "Personal Project"
 github_url: "https://github.com/pranaypalem/RL-ppo-vs-trpo"

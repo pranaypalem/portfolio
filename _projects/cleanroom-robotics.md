@@ -5,8 +5,6 @@ long_description: "Engineered precision motion planning systems for SCARA robots
 domains:
   - name: "Robotics"
     slug: "robotics"
-  - name: "Industrial Automation"
-    slug: "industrial-automation"
 period: "Aug 2023 - Sep 2023"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/cleanroom-robotics"

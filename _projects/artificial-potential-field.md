@@ -5,8 +5,6 @@ long_description: "Developed comprehensive multi-robot firefighting system using
 domains:
   - name: "Robotics"
     slug: "robotics"
-  - name: "Multi-Agent Systems"
-    slug: "multi-agent"
 period: "2024"
 organization: "Personal Project"
 github_url: "https://github.com/pranaypalem/artificial-potential-field"
