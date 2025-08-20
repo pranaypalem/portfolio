@@ -139,7 +139,13 @@ title: "Home"
                 {% endif %}
                 <div class="project-content">
                     <div class="project-meta">
-                        <span class="project-domain {{ project.domain_slug }}">{{ project.domain }}</span>
+                        {% if project.domains %}
+                            {% for domain in project.domains %}
+                            <span class="project-domain {{ domain.slug }}">{% if domain.slug == 'automation' %}automation{% else %}{{ domain.name }}{% endif %}</span>
+                            {% endfor %}
+                        {% elsif project.domain %}
+                            <span class="project-domain {{ project.domain_slug }}">{{ project.domain }}</span>
+                        {% endif %}
                         <span class="project-period">{{ project.period }}</span>
                     </div>
                     <h3 class="project-title">

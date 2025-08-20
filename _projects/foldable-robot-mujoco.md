@@ -5,6 +5,8 @@ long_description: "Developed comprehensive simulation framework for biomimetic f
 domains:
   - name: "Robotics"
     slug: "robotics"
+  - name: "Simulation"
+    slug: "simulation"
 period: "Aug 2024 - Dec 2024"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/foldable-robotics"

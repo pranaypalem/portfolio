@@ -609,6 +609,11 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--destructive);
 }
 
+.project-domain.industrial-automation {
+    background: hsl(0, 84%, 95%);
+    color: var(--destructive);
+}
+
 .project-period {
     font-size: var(--font-size-sm);
     color: var(--muted-foreground);

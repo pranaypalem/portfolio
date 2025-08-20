@@ -5,8 +5,6 @@ long_description: "Developed comprehensive end-to-end robotic perception pipelin
 domains:
   - name: "Simulation"
     slug: "simulation"
-  - name: "Robotics"
-    slug: "robotics"
 period: "Jan 2025 - May 2025"
 organization: "Arizona State University"
 github_url: "https://github.com/pranaypalem/perception-pipeline"

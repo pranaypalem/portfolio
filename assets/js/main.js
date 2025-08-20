@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'AI/ML': 'ai-ml',
             'Robotics': 'robotics',
             'Simulation': 'simulation',
-            'Industrial Automation': 'industrial-automation'
+            'Industrial Automation': 'automation'
         };
         
         let currentFilter = 'all';
@@ -239,10 +239,18 @@ document.addEventListener('DOMContentLoaded', function() {
             let visibleCount = 0;
             
             projectCards.forEach((card, index) => {
-                const projectDomain = card.querySelector('.project-domain').textContent.trim();
-                const projectDomainSlug = domainSlugMap[projectDomain] || projectDomain.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                const projectDomains = card.querySelectorAll('.project-domain');
+                let shouldShow = targetDomain === 'all';
                 
-                const shouldShow = targetDomain === 'all' || projectDomainSlug === targetDomain;
+                // Check if any of the project's domains match the target
+                projectDomains.forEach(domainElement => {
+                    const projectDomain = domainElement.textContent.trim();
+                    const projectDomainSlug = domainSlugMap[projectDomain] || projectDomain.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                    
+                    if (projectDomainSlug === targetDomain) {
+                        shouldShow = true;
+                    }
+                });
                 
                 if (shouldShow) {
                     card.style.display = 'flex';

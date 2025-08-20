@@ -8,7 +8,7 @@ layout: default
             <div class="project-meta">
                 {% if page.domains %}
                     {% for domain in page.domains %}
-                    <span class="project-domain {{ domain.slug }}">{{ domain.name }}</span>
+                    <span class="project-domain {{ domain.slug }}">{% if domain.slug == 'automation' %}automation{% else %}{{ domain.name }}{% endif %}</span>
                     {% endfor %}
                 {% elsif page.domain %}
                     <span class="project-domain {{ page.domain_slug }}">{{ page.domain }}</span>
