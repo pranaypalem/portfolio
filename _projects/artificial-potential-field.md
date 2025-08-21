@@ -14,9 +14,7 @@ preview_image: "/assets/images/projects/multirobot-preview.png"
 technologies:
   - "Python"
   - "NumPy"
-  - "Matplotlib"
-  - "Robotarium"
-  - "Control Theory"
+  - "matplotlib"
 tags:
   - "Path Planning"
   - "Collision Avoidance"

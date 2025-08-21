@@ -14,11 +14,9 @@ show_code_button: false
 cover_image: "/assets/images/projects/Gmapping_SLAM_preview.gif"
 preview_image: "/assets/images/projects/Gmapping_SLAM_preview.gif"
 technologies:
-  - "NVIDIA Isaac Sim"
   - "ROS"
+  - "Isaac Sim"
   - "GMapping"
-  - "Nova Carter"
-  - "2D LiDAR"
 tags:
   - "SLAM"
   - "Simulation"

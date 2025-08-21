@@ -14,9 +14,7 @@ preview_image: "/assets/images/projects/perception-pipeline-preview.gif"
 technologies:
   - "ROS 2"
   - "YOLOv8"
-  - "Isaac Sim"
   - "TensorRT"
-  - "NVIDIA Jetson"
 tags:
   - "SLAM"
   - "Object Detection"

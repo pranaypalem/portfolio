@@ -14,8 +14,6 @@ preview_image: "/assets/images/projects/simclr-chest-xray-cover.png"
 technologies:
   - "PyTorch"
   - "SimCLR"
-  - "ResNet"
-  - "NT-Xent Loss"
   - "Medical Imaging"
 tags:
   - "Computer Vision"

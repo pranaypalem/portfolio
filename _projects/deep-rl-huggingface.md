@@ -13,12 +13,9 @@ show_code_button: false
 cover_image: "/assets/images/projects/PPO_Pyramids.gif"
 preview_image: "/assets/images/projects/PPO_Pyramids.gif"
 technologies:
-  - "Stable Baselines3"
-  - "CleanRL"
-  - "Sample Factory"
-  - "PyBullet"
-  - "VizDoom"
+  - "PyTorch"
   - "PPO"
+  - "Stable Baselines3"
 tags:
   - "Deep RL"
   - "Policy Optimization"

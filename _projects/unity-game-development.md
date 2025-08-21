@@ -16,8 +16,6 @@ technologies:
   - "Unity Engine"
   - "C#"
   - "3D Graphics"
-  - "Game Physics"
-  - "Unity Editor"
 tags:
   - "Game Development"
   - "Unity"
