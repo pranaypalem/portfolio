@@ -748,6 +748,27 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--primary);
 }
 
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-badges a {
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.skill-badges a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.skill-badges img {
+    height: 28px;
+    border-radius: 4px;
+}
+
 /* Experience Timeline */
 .timeline {
     position: relative;
